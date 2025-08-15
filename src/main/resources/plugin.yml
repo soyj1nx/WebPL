@@ -1,0 +1,7 @@
+name: Web
+version: 1.0
+main: dev.j1nx.Web
+commands:
+  resetpassword:
+    description: Resetea tu contraseña web
+    usage: /resetpassword
