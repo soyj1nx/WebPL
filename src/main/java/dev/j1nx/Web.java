@@ -14,10 +14,8 @@ public final class Web extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Guarda config.yml si no existe
         saveDefaultConfig();
 
-        // Cargar valores de MySQL desde config.yml
         String host = getConfig().getString("mysql.host");
         int port = getConfig().getInt("mysql.port");
         String database = getConfig().getString("mysql.database");
@@ -46,10 +44,9 @@ public final class Web extends JavaPlugin {
 
         } catch (SQLException e) {
             getLogger().severe("❌ Error conectando a la base de datos: " + e.getMessage());
-            connection = null; // Para evitar NullPointer más tarde
+            connection = null;
         }
 
-        // Registrar el comando solo si hay conexión
         if (connection != null) {
             getCommand("resetpassword").setExecutor(new ResetPassword(this));
         } else {
